@@ -1,0 +1,2775 @@
+.version sol 0.59.0
+
+.macro constructor
+DROP
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+GETGLOB 6
+THROWIF 51
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 32
+LDDICT
+ROTREV
+PAIR
+SWAP
+LDU 128
+ENDS
+.loc CreditFactory.sol, 32
+DUP
+PUSHINT 5000000000
+LESS
+THROWIFNOT 1070
+.loc CreditFactory.sol, 33
+PUSH S2
+PARSEMSGADDR
+INDEX 3
+PLDU 256
+THROWIFNOT 1180
+.loc CreditFactory.sol, 34
+ACCEPT
+.loc CreditFactory.sol, 35
+PUSHINT 0
+PUSHCONT {
+	PUSH2 S0, S2
+	FIRST
+	LESS
+}
+PUSHCONT {
+	.loc CreditFactory.sol, 36
+	PUSH2 S0, S2
+	SECOND
+	PUSHINT 32
+	DICTUGET
+	THROWIFNOT 50
+	PLDU 256
+	PUSHCONT {
+		.loc CreditFactory.sol, 37
+		GETGLOB 12
+		PUSH2 S1, S3
+		SECOND
+		PUSHINT 32
+		DICTUGET
+		THROWIFNOT 50
+		PLDU 256
+		NEWC
+		STU 256
+		SWAP
+		UNPAIR
+		OVER
+		INC
+		ROLLREV 3
+		PUSHINT 32
+		DICTUSETB
+		PAIR
+		SETGLOB 12
+		.loc CreditFactory.sol, 0
+	}
+	IF
+	.loc CreditFactory.sol, 35
+	INC
+	.loc CreditFactory.sol, 0
+}
+WHILE
+DROP
+.loc CreditFactory.sol, 40
+ROT
+SETGLOB 11
+.loc CreditFactory.sol, 41
+SETGLOB 14
+.loc CreditFactory.sol, 0
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro setCreditProcessorCode
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 44
+LDREF
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $setCreditProcessorCode_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro setCreditProcessorCode_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 45
+ACCEPT
+.loc CreditFactory.sol, 46
+DUP
+SETGLOB 15
+.loc CreditFactory.sol, 47
+HASHCU
+PUSHSLICE xc00000000000000000000000003384eede
+NEWC
+STSLICE
+STU 256
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro getCreditProcessorCode
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 50
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $getCreditProcessorCode_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 3097416143
+	STUR 130
+	STREF
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 106
+	STZEROES
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STREF
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro getCreditProcessorCode_internal_macro
+.loc CreditFactory.sol, 51
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+FALSE
+SETINDEXQ 1
+PUSHINT 64
+SETINDEXQ 4
+SETGLOB 4
+GETGLOB 15
+.loc CreditFactory.sol, 0
+
+.macro setFee
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 54
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $setFee_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro setFee_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 55
+DUP
+PUSHINT 5000000000
+LESS
+THROWIFNOT 1070
+.loc CreditFactory.sol, 56
+ACCEPT
+.loc CreditFactory.sol, 57
+DUP
+SETGLOB 14
+.loc CreditFactory.sol, 58
+PUSHSLICE xc0000000000000000000000000664e8ae6
+NEWC
+STSLICE
+STU 128
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro getDetails
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 61
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $getDetails_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 2926387877
+	STUR 130
+	SWAP
+	UNPAIR
+	ROTREV
+	UNPAIR
+	XCHG S2
+	STU 32
+	STDICT
+	STU 128
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 106
+	STZEROES
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	SWAP
+	UNPAIR
+	ROTREV
+	UNPAIR
+	XCHG S2
+	STU 32
+	STDICT
+	STU 128
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro getDetails_internal_macro
+.loc CreditFactory.sol, 62
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+FALSE
+SETINDEXQ 1
+PUSHINT 64
+SETINDEXQ 4
+SETGLOB 4
+GETGLOB 12
+GETGLOB 14
+PAIR
+.loc CreditFactory.sol, 0
+
+.macro deployProcessorForUser
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 68
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDU 256
+LDU 32
+LDREF
+LDU 32
+LDU 256
+ROLLREV 5
+TUPLE 5
+SWAP
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $deployProcessorForUser_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro deployProcessorForUser_internal_macro
+.loc CreditFactory.sol, 72
+DEPTH
+ADDCONST -2
+PICK
+PUSHINT 5000000000
+PUSHINT 100000000
+ADD
+UFITS 128
+PUSHINT 200000000
+ADD
+UFITS 128
+GEQ
+THROWIFNOT 2000
+.loc CreditFactory.sol, 73
+OVER
+THIRD
+CALLREF {
+	CALL $EventDataDecoder_no_obj_isValid_macro$
+}
+THROWIFNOT 1150
+.loc CreditFactory.sol, 74
+OVER
+THIRD
+CALLREF {
+	CALL $EventDataDecoder_no_obj_decode_macro$
+}
+.loc CreditFactory.sol, 75
+DUP
+THIRD
+MYADDR
+SDEQ
+THROWIFNOT 1080
+.loc CreditFactory.sol, 76
+DUP
+INDEX 4
+OVER
+FIRST
+LESS
+OVER
+INDEX 4
+PUSH S2
+FIRST
+EQUAL
+PUSH S2
+INDEX 5
+EQINT 0
+AND
+OR
+THROWIFNOT 1120
+.loc CreditFactory.sol, 79
+DUP
+INDEX 6
+LESSINT 2
+THROWIFNOT 1130
+.loc CreditFactory.sol, 80
+DUP
+SECOND
+PARSEMSGADDR
+INDEX 3
+PLDU 256
+THROWIFNOT 1090
+.loc CreditFactory.sol, 81
+DUP
+INDEX 3
+PARSEMSGADDR
+INDEX 3
+PLDU 256
+THROWIFNOT 1100
+.loc CreditFactory.sol, 82
+DUP
+INDEX 7
+SECOND
+OVER
+INDEX 7
+FIRST
+GREATER
+THROWIFNOT 1140
+.loc CreditFactory.sol, 84
+GETGLOB 9
+PUSH2 S2, S3
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROLLREV 3
+NEWC
+STSLICECONST x67bc0c6a
+SWAP
+UNTUPLE 5
+REVERSE 6, 0
+STU 256
+STU 32
+STREF
+STU 32
+STU 256
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc CreditFactory.sol, 86
+SECOND
+PUSHINT 0
+DUP
+NEWC
+STU 256
+PUSHINT 0
+NEWDICT
+PUSHINT 64
+DICTUSETB
+ROLL 4
+CALLREF {
+	UNTUPLE 5
+	REVERSE 5, 0
+	NEWC
+	STU 256
+	STU 32
+	STREF
+	STU 32
+	STU 256
+}
+PUSHINT 1
+ROT
+PUSHINT 64
+DICTUSETB
+ROLL 3
+PUSHINT 2
+ROT
+PUSHINT 64
+DICTUSET
+NEWC
+STDICT
+ENDC
+GETGLOB 15
+NEWC
+STSLICECONST x2_
+STOPTREF
+STOPTREF
+STZERO
+ENDC
+DUP
+HASHCU
+NEWC
+STSLICECONST x801_
+STU 256
+NEWC
+STSLICECONST x62_
+STB
+PUSHINT 3
+STUR 111
+OVER
+CALLREF {
+	CTOS
+	LDI 1
+	SWAP
+	PUSHCONT {
+		LDI 5
+		NIP
+	}
+	IF
+	LDI 1
+	SWAP
+	PUSHCONT {
+		LDI 2
+		NIP
+	}
+	IF
+	LDOPTREF
+	LDOPTREF
+	LDDICT
+	ENDS
+	BLKDROP 3
+}
+STREF
+STSLICECONST 1
+ROTREV
+NEWC
+STSLICECONST x20731313
+STU 128
+STSLICE
+STBREFR
+ENDC
+PUSHINT 64
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro deployProcessor
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 98
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDU 256
+LDU 32
+LDREF
+LDU 32
+LDU 256
+ROLLREV 5
+TUPLE 5
+SWAP
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $deployProcessor_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro deployProcessor_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 103
+PUSH S2
+THIRD
+CALLREF {
+	CALL $EventDataDecoder_no_obj_isValid_macro$
+}
+THROWIFNOT 1150
+.loc CreditFactory.sol, 104
+ACCEPT
+.loc CreditFactory.sol, 106
+PUSH S2
+THIRD
+CALLREF {
+	CALL $EventDataDecoder_no_obj_decode_macro$
+}
+.loc CreditFactory.sol, 108
+DUP
+THIRD
+MYADDR
+SDEQ
+DUP
+PUSHCONT {
+	DROP
+	GETPARAM 7
+	FIRST
+	PUSH S2
+	PUSHINT 100000000
+	ADD
+	UFITS 128
+	GREATER
+	PUSH S2
+	PUSHINT 5000000000
+	GEQ
+	PUSH S2
+	INDEX 4
+	PUSH S3
+	FIRST
+	LESS
+	PUSH S3
+	INDEX 6
+	LESSINT 2
+	AND
+	AND
+	AND
+	DUP
+	PUSHCONT {
+		DROP
+		DUP
+		SECOND
+		PARSEMSGADDR
+		INDEX 3
+		PLDU 256
+		NEQINT 0
+		DUP
+		PUSHCONT {
+			DROP
+			DUP
+			INDEX 3
+			PARSEMSGADDR
+			INDEX 3
+			PLDU 256
+			NEQINT 0
+			OVER
+			INDEX 7
+			SECOND
+			PUSH S2
+			INDEX 7
+			FIRST
+			GREATER
+			AND
+		}
+		IF
+	}
+	IF
+}
+IF
+PUSHCONT {
+	.loc CreditFactory.sol, 117
+	MYADDR
+	GETGLOB 14
+	PUSHINT 0
+	NEWC
+	STU 256
+	PUSHINT 0
+	NEWDICT
+	PUSHINT 64
+	DICTUSETB
+	PUSH S6
+	CALLREF {
+		UNTUPLE 5
+		REVERSE 5, 0
+		NEWC
+		STU 256
+		STU 32
+		STREF
+		STU 32
+		STU 256
+	}
+	PUSHINT 1
+	ROT
+	PUSHINT 64
+	DICTUSETB
+	PUSH S5
+	PUSHINT 2
+	ROT
+	PUSHINT 64
+	DICTUSET
+	NEWC
+	STDICT
+	ENDC
+	GETGLOB 15
+	NEWC
+	STSLICECONST x2_
+	STOPTREF
+	STOPTREF
+	STZERO
+	ENDC
+	DUP
+	HASHCU
+	NEWC
+	STSLICECONST x801_
+	STU 256
+	ROLLREV 3
+	PUSH S5
+	ROLL 4
+	NEWC
+	STSLICECONST x62_
+	STB
+	SWAP
+	STGRAMS
+	PUSHINT 3
+	STUR 107
+	OVER
+	CALLREF {
+		CTOS
+		LDI 1
+		SWAP
+		PUSHCONT {
+			LDI 5
+			NIP
+		}
+		IF
+		LDI 1
+		SWAP
+		PUSHCONT {
+			LDI 2
+			NIP
+		}
+		IF
+		LDOPTREF
+		LDOPTREF
+		LDDICT
+		ENDS
+		BLKDROP 3
+	}
+	STREF
+	STSLICECONST 1
+	ROTREV
+	NEWC
+	STSLICECONST x20731313
+	STU 128
+	STSLICE
+	STBREFR
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+	.loc CreditFactory.sol, 0
+}
+IF
+.loc CreditFactory.sol, 0
+BLKDROP 4
+
+.macro getCreditProcessorAddress
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 130
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDU 256
+LDU 32
+LDREF
+LDU 32
+LDU 256
+ROLLREV 5
+TUPLE 5
+SWAP
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $getCreditProcessorAddress_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 1
+	STUR 98
+	SWAP
+	NEWC
+	STSLICECONST x8e91a402
+	STSLICE
+	STBREFR
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	SWAP
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STSLICE
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro getCreditProcessorAddress_internal_macro
+.loc CreditFactory.sol, 138
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+FALSE
+SETINDEXQ 1
+PUSHINT 64
+SETINDEXQ 4
+SETGLOB 4
+CALLREF {
+	CALL $_getCreditProcessorAddress_internal_macro$
+}
+.loc CreditFactory.sol, 0
+
+.globl	_getCreditProcessorAddress_internal
+.type	_getCreditProcessorAddress_internal, @function
+CALL $_getCreditProcessorAddress_internal_macro$
+
+.macro _getCreditProcessorAddress_internal_macro
+.loc CreditFactory.sol, 145
+PUSHINT 0
+NEWC
+STU 256
+PUSHINT 0
+NEWDICT
+PUSHINT 64
+DICTUSETB
+ROT
+CALLREF {
+	UNTUPLE 5
+	REVERSE 5, 0
+	NEWC
+	STU 256
+	STU 32
+	STREF
+	STU 32
+	STU 256
+}
+PUSHINT 1
+ROT
+PUSHINT 64
+DICTUSETB
+SWAP
+PUSHINT 2
+ROT
+PUSHINT 64
+DICTUSET
+NEWC
+STDICT
+ENDC
+GETGLOB 15
+NEWC
+STSLICECONST x2_
+STOPTREF
+STOPTREF
+STZERO
+ENDC
+.loc CreditFactory.sol, 155
+HASHCU
+NEWC
+STSLICECONST x801_
+STU 256
+ENDC
+CTOS
+.loc CreditFactory.sol, 0
+
+.macro proxyTokensTransfer
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 158
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+LDU 128
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDU 128
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDI 1
+LDREF
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $proxyTokensTransfer_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro proxyTokensTransfer_internal_macro
+.loc access/MultiOwner.sol, 19
+GETGLOB 9
+GETGLOB 11
+SDEQ
+THROWIFNOT 1101
+.loc CreditFactory.sol, 168
+ACCEPT
+.loc CreditFactory.sol, 170
+REVERSE 8, 0
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 1
+STUR 107
+ROLLREV 6
+NEWC
+STSLICECONST x73e22143
+STU 128
+STSLICE
+STU 128
+ROLLREV 3
+NEWC
+STSLICE
+STI 1
+STREF
+STBREFR
+STBREFR
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro sendGas
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 183
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+LDU 16
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $sendGas_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro sendGas_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 188
+ACCEPT
+.loc CreditFactory.sol, 189
+XCHG S2
+NEWC
+STSLICECONST x42_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 107
+STZEROES
+ENDC
+SWAP
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRevertRemainderGas
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 192
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRevertRemainderGas_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRevertRemainderGas_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 193
+ACCEPT
+.loc CreditFactory.sol, 194
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHINT 42045022170482489768618347945393405442362073356633
+STUR 167
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runProcess
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 197
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runProcess_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runProcess_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 198
+ACCEPT
+.loc CreditFactory.sol, 199
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHINT 42045022170482489768618347945393405442361386376241
+STUR 167
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runDeriveEventAddress
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 202
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runDeriveEventAddress_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runDeriveEventAddress_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 203
+ACCEPT
+.loc CreditFactory.sol, 204
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 187586903
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRequestEventConfigDetails
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 207
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRequestEventConfigDetails_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRequestEventConfigDetails_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 208
+ACCEPT
+.loc CreditFactory.sol, 209
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 820486835
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runDeployEvent
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 212
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runDeployEvent_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runDeployEvent_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 213
+ACCEPT
+.loc CreditFactory.sol, 214
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 18931952
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRequestTokenEventProxyConfig
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 217
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRequestTokenEventProxyConfig_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRequestTokenEventProxyConfig_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 218
+ACCEPT
+.loc CreditFactory.sol, 219
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 1983964396
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRequestDexPairAddress
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 222
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRequestDexPairAddress_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRequestDexPairAddress_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 223
+ACCEPT
+.loc CreditFactory.sol, 224
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 1631609143
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRequestDexVault
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 227
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRequestDexVault_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRequestDexVault_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 228
+ACCEPT
+.loc CreditFactory.sol, 229
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 1347660196
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runCheckEventStatus
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 232
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runCheckEventStatus_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runCheckEventStatus_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 233
+ACCEPT
+.loc CreditFactory.sol, 234
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 286454403
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRetryUnwrap
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 237
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRetryUnwrap_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRetryUnwrap_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 238
+ACCEPT
+.loc CreditFactory.sol, 239
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 2032029702
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runRetrySwap
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 242
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runRetrySwap_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runRetrySwap_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 243
+ACCEPT
+.loc CreditFactory.sol, 244
+SWAP
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 1140653130
+STUR 139
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro runSetSlippage
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 247
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDU 128
+LDU 128
+LDU 128
+ROTREV
+PAIR
+SWAP
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $runSetSlippage_internal_macro$
+}
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro runSetSlippage_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc CreditFactory.sol, 248
+ACCEPT
+.loc CreditFactory.sol, 249
+XCHG S2
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHINT 1
+STUR 107
+SWAP
+NEWC
+STSLICECONST x0720ba80
+SWAP
+UNPAIR
+XCHG S2
+STU 128
+STU 128
+STBREFR
+ENDC
+PUSHINT 1
+SENDRAWMSG
+.loc CreditFactory.sol, 0
+
+.macro receive_macro
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 0
+DUP
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+
+.macro upgrade
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc CreditFactory.sol, 255
+LDREF
+ENDS
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $upgrade_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro upgrade_internal_macro
+.loc access/MultiOwner.sol, 19
+GETGLOB 9
+GETGLOB 11
+SDEQ
+THROWIFNOT 1101
+.loc CreditFactory.sol, 256
+GETPARAM 7
+FIRST
+PUSHINT 10000000000
+GREATER
+THROWIFNOT 2000
+.loc CreditFactory.sol, 258
+ACCEPT
+.loc CreditFactory.sol, 262
+GETGLOB 13
+NEWC
+STU 32
+.loc CreditFactory.sol, 263
+GETGLOB 14
+STUR 128
+.loc CreditFactory.sol, 264
+GETGLOB 15
+SWAP
+STREF
+.loc CreditFactory.sol, 266
+OVER
+SETCODE
+.loc CreditFactory.sol, 267
+SWAP
+CTOS
+DUP
+PUSHSLICE x8adb35
+SDEQ
+PUSHCONT {
+	PLDREFIDX 1
+	CTOS
+}
+IF
+PLDREF
+CTOS
+BLESS
+POP C3
+.loc CreditFactory.sol, 269
+ENDC
+CALLREF {
+	CALL $:onCodeUpgrade$
+}
+.loc CreditFactory.sol, 0
+
+.internal-alias :onCodeUpgrade, 2
+.internal :onCodeUpgrade
+DROP
+.loc CreditFactory.sol, 0
+CALLREF {
+	CALL $c7_to_c4$
+}
+COMMIT
+THROW 0
+
+.macro addOwner
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc access/MultiOwner.sol, 23
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDU 256
+ENDS
+.loc access/MultiOwner.sol, 0
+CALLREF {
+	CALL $addOwner_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro addOwner_internal_macro
+.loc access/MultiOwner.sol, 14
+CALLREF {
+	CALL $isOwner_internal_macro$
+}
+THROWIFNOT 1101
+.loc access/MultiOwner.sol, 24
+DUP
+THROWIFNOT 1102
+.loc access/MultiOwner.sol, 25
+ACCEPT
+.loc access/MultiOwner.sol, 27
+GETGLOB 12
+OVER
+NEWC
+STU 256
+SWAP
+UNPAIR
+OVER
+INC
+ROLLREV 3
+PUSHINT 32
+DICTUSETB
+PAIR
+SETGLOB 12
+.loc access/MultiOwner.sol, 28
+PUSHSLICE xc00000000000000000000000000743b0b2
+NEWC
+STSLICE
+STU 256
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc access/MultiOwner.sol, 0
+
+.macro resetOwners
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc access/MultiOwner.sol, 31
+ENDS
+.loc access/MultiOwner.sol, 0
+CALLREF {
+	CALL $resetOwners_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro resetOwners_internal_macro
+.loc access/MultiOwner.sol, 19
+GETGLOB 9
+GETGLOB 11
+SDEQ
+THROWIFNOT 1101
+.loc access/MultiOwner.sol, 32
+ACCEPT
+.loc access/MultiOwner.sol, 34
+PUSHINT 0
+NEWDICT
+PAIR
+SETGLOB 12
+.loc access/MultiOwner.sol, 0
+
+.globl	isOwner_internal
+.type	isOwner_internal, @function
+CALL $isOwner_internal_macro$
+
+.macro isOwner_internal_macro
+.loc access/MultiOwner.sol, 38
+PUSHINT 0
+FALSE ; decl return flag
+PUSHCONT {
+	OVER
+	GETGLOB 12
+	FIRST
+	LESS
+}
+PUSHCONT {
+	.loc access/MultiOwner.sol, 39
+	OVER
+	GETGLOB 12
+	SECOND
+	PUSHINT 32
+	DICTUGET
+	THROWIFNOT 50
+	PLDU 256
+	GETGLOB 5
+	DUP
+	ISNULL
+	PUSHCONT {
+		DROP
+		PUSHINT 0
+	}
+	IF
+	EQUAL
+	PUSHCONT {
+		.loc access/MultiOwner.sol, 41
+		DROP2
+		TRUE
+		PUSHINT 4
+		RETALT
+		.loc access/MultiOwner.sol, 0
+	}
+	IFJMP
+	.loc access/MultiOwner.sol, 38
+	OVER
+	INC
+	POP S2
+	.loc access/MultiOwner.sol, 0
+}
+WHILEBRK
+IFRET
+DROP
+.loc access/MultiOwner.sol, 44
+GETGLOB 9
+GETGLOB 11
+SDEQ
+PUSHCONT {
+	.loc access/MultiOwner.sol, 45
+	TRUE
+	.loc access/MultiOwner.sol, 0
+}
+IFJMP
+.loc access/MultiOwner.sol, 47
+PUSHINT 0
+FALSE ; decl return flag
+PUSHCONT {
+	OVER
+	GETGLOB 12
+	FIRST
+	LESS
+}
+PUSHCONT {
+	.loc access/MultiOwner.sol, 48
+	OVER
+	GETGLOB 12
+	SECOND
+	PUSHINT 32
+	DICTUGET
+	THROWIFNOT 50
+	PLDU 256
+	GETGLOB 9
+	PARSEMSGADDR
+	INDEX 3
+	PLDU 256
+	EQUAL
+	DUP
+	PUSHCONT {
+		DROP
+		GETGLOB 9
+		PARSEMSGADDR
+		THIRD
+		MYADDR
+		PARSEMSGADDR
+		THIRD
+		EQUAL
+	}
+	IF
+	PUSHCONT {
+		.loc access/MultiOwner.sol, 50
+		DROP2
+		TRUE
+		PUSHINT 4
+		RETALT
+		.loc access/MultiOwner.sol, 0
+	}
+	IFJMP
+	.loc access/MultiOwner.sol, 47
+	OVER
+	INC
+	POP S2
+	.loc access/MultiOwner.sol, 0
+}
+WHILEBRK
+IFRET
+DROP
+.loc access/MultiOwner.sol, 53
+FALSE
+.loc access/MultiOwner.sol, 0
+
+.macro c4_to_c7
+PUSHROOT
+CTOS
+LDU 256 ; pubkey c4
+LDU 64 ; pubkey timestamp c4
+LDU 1 ; ctor flag
+NIP
+LDU 256
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDU 32
+LDDICT
+ROTREV
+PAIR
+SWAP
+LDU 32
+LDU 128
+LDREF
+ENDS
+SETGLOB 15
+SETGLOB 14
+SETGLOB 13
+SETGLOB 12
+SETGLOB 11
+SETGLOB 10
+SETGLOB 3
+SETGLOB 2
+
+.macro c4_to_c7_with_init_storage
+PUSHROOT
+CTOS
+SBITS
+GTINT 1
+PUSHCONT {
+	PUSHINT 0
+	PUSHROOT
+	CTOS
+	PLDDICT ; D
+	PUSHINT 1
+	OVER
+	PUSHINT 64
+	DICTUGET
+	PUSHCONT {
+		PLDU 256
+	}
+	PUSHCONT {
+		PUSHINT 0
+	}
+	IFELSE
+	PUSHREFSLICE {
+		.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+	}
+	PUSHINT 0
+	NEWDICT
+	PAIR
+	PUSHINT 0
+	DUP
+	PUSHREF {
+	}
+	SETGLOB 15
+	SETGLOB 14
+	SETGLOB 13
+	SETGLOB 12
+	SETGLOB 11
+	SETGLOB 10
+	PUSHINT 64
+	DICTUGET
+	THROWIFNOT 61
+	PLDU 256
+	SETGLOB 2
+	PUSHINT 0 ; timestamp
+	SETGLOB 3
+	PUSHINT 1
+	SETGLOB 13
+}
+IFREFELSE {
+	CALL $c4_to_c7$
+}
+
+.macro c7_to_c4
+GETGLOB 15
+GETGLOB 14
+GETGLOB 13
+GETGLOB 12
+GETGLOB 11
+GETGLOB 10
+GETGLOB 3
+GETGLOB 2
+NEWC
+STU 256
+STU 64
+STONE
+STU 256
+ROLLREV 5
+NEWC
+STSLICE
+SWAP
+UNPAIR
+XCHG S2
+STU 32
+STDICT
+STU 32
+STU 128
+STREF
+STBREFR
+ENDC
+POPROOT
+
+.macro upd_only_time_in_c4
+PUSHROOT
+CTOS
+LDU 256
+LDU 64
+NIP
+GETGLOB 3
+ROT
+NEWC
+STU 256
+STU 64
+STSLICE
+ENDC
+POPROOT
+
+.internal-alias :main_internal, 0
+.internal :main_internal
+PUSHROOT
+CTOS
+SBITS
+NEQINT 1
+SETGLOB 6
+PUSH S2
+CTOS
+LDU 4 ; bounced tail
+LDMSGADDR ; bounced src tail
+DROP
+SETGLOB 9
+MODPOW2 1
+GETGLOB 4
+TRUE
+SETINDEXQ 1
+PUSHINT 10000000
+SETINDEXQ 2
+NULL
+SETINDEXQ 3
+PUSHINT 0
+SETINDEXQ 4
+SETGLOB 4
+IFRET
+OVER
+SEMPTY ; isEmpty
+IFJMPREF {
+	GETGLOB 6
+	THROWIFNOT 76
+}
+OVER
+LDUQ 32  ; [funcId] body' ok
+THROWIFNOT 60
+OVER
+IFNOTJMPREF {
+	GETGLOB 6
+	THROWIFNOT 76
+}
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+THROW 60
+
+.internal-alias :main_external, -1
+.internal :main_external
+PUSHROOT
+CTOS
+SBITS
+NEQINT 1
+SETGLOB 6
+PUSHREFSLICE {
+	.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+}
+SETGLOB 9
+OVER
+CALLREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+LDU 1 ; haveSign msgSlice
+SWAP
+PUSHCONT {
+	PUSHINT 512
+	LDSLICEX ; signatureSlice msgSlice
+	DUP
+	HASHSU ; signatureSlice msgSlice hashMsgSlice
+	SWAP
+	LDU 1 ; signatureSlice hashMsgSlice havePubkey msgSlice
+	SWAP
+	PUSHCONT {
+		LDU 256 ; signatureSlice hashMsgSlice pubkey msgSlice
+		XCHG S3
+		SWAP
+	}
+	PUSHCONT {
+		XCHG S2
+		GETGLOB 2
+	}
+	IFELSE
+	DUP
+	SETGLOB 5
+	CHKSIGNU ; msgSlice isSigned
+	THROWIFNOT 40
+}
+PUSHCONT {
+	LDU 1 ; havePubkey msgSlice
+	SWAP
+	THROWIF 58
+}
+IFELSE
+LDU 64 ; timestamp msgSlice
+SWAP
+CALL $replay_protection_macro$
+LDU 32 ; expireAt msgSlice
+SWAP
+NOW ; msgSlice expireAt now
+GREATER ; msgSlice expireAt>now
+THROWIFNOT 57
+LDU 32 ; funcId body
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+THROW 60
+
+.macro _randomNonce
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 10
+OVER
+PUSHCONT {
+	PUSHSLICE xc0000000000000000000000000bb53331f
+	NEWC
+	STSLICE
+	STU 256
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro admin
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 11
+OVER
+PUSHCONT {
+	PUSHSLICE xc000000000000000000000000086b0bd64
+	NEWC
+	STSLICE
+	STSLICE
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro owners
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 12
+OVER
+PUSHCONT {
+	PUSHSLICE xc0000000000000000000000000ef20a3ed
+	NEWC
+	STSLICE
+	SWAP
+	UNPAIR
+	XCHG S2
+	STU 32
+	STDICT
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro version
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 13
+OVER
+PUSHCONT {
+	PUSHSLICE xc0000000000000000000000000f9a03f5b
+	NEWC
+	STSLICE
+	STU 32
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.globl	EventDataDecoder_with_obj_isValid
+.type	EventDataDecoder_with_obj_isValid, @function
+CALL $EventDataDecoder_with_obj_isValid_macro$
+
+.macro EventDataDecoder_with_obj_isValid_macro
+.loc libraries/EventDataDecoder.sol, 29
+DUP
+CTOS
+.loc libraries/EventDataDecoder.sol, 30
+DUP
+PUSHINT 904
+PUSHINT 1
+SCHKBITREFSQ
+DUP
+PUSHCONT {
+	DROP
+	LDREFRTOS
+	PUSHINT 520
+	PUSHINT 1
+	SCHKBITREFSQ
+}
+IF
+NIP
+.loc libraries/EventDataDecoder.sol, 0
+
+.globl	EventDataDecoder_no_obj_isValid
+.type	EventDataDecoder_no_obj_isValid, @function
+CALL $EventDataDecoder_no_obj_isValid_macro$
+
+.macro EventDataDecoder_no_obj_isValid_macro
+.loc libraries/EventDataDecoder.sol, 29
+CTOS
+.loc libraries/EventDataDecoder.sol, 30
+DUP
+PUSHINT 904
+PUSHINT 1
+SCHKBITREFSQ
+DUP
+PUSHCONT {
+	DROP
+	LDREFRTOS
+	PUSHINT 520
+	PUSHINT 1
+	SCHKBITREFSQ
+}
+IF
+NIP
+.loc libraries/EventDataDecoder.sol, 0
+
+.globl	EventDataDecoder_with_obj_decode
+.type	EventDataDecoder_with_obj_decode, @function
+CALL $EventDataDecoder_with_obj_decode_macro$
+
+.macro EventDataDecoder_with_obj_decode_macro
+.loc libraries/EventDataDecoder.sol, 34
+DUP
+CTOS
+.loc libraries/EventDataDecoder.sol, 35
+LDREFRTOS
+.loc libraries/EventDataDecoder.sol, 37
+OVER
+LDU 128
+LDI 8
+POP S4
+.loc libraries/EventDataDecoder.sol, 39
+SWAP
+PUSH S3
+LDU 256
+POP S5
+PUSH S2
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+PUSH S4
+LDU 256
+POP S6
+PUSH S3
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+ROLL 5
+LDU 256
+DROP
+ROLL 4
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+PUSH S4
+LDU 128
+POP S6
+PUSH S5
+LDU 128
+POP S7
+PUSH S6
+LDU 8
+POP S8
+PUSH S7
+LDU 128
+POP S9
+PUSH S8
+LDU 128
+POP S10
+PAIR
+ROLL 8
+LDREF
+DROP
+TUPLE 9
+.loc libraries/EventDataDecoder.sol, 0
+
+.globl	EventDataDecoder_no_obj_decode
+.type	EventDataDecoder_no_obj_decode, @function
+CALL $EventDataDecoder_no_obj_decode_macro$
+
+.macro EventDataDecoder_no_obj_decode_macro
+.loc libraries/EventDataDecoder.sol, 34
+CTOS
+.loc libraries/EventDataDecoder.sol, 35
+LDREFRTOS
+.loc libraries/EventDataDecoder.sol, 37
+OVER
+LDU 128
+LDI 8
+POP S4
+.loc libraries/EventDataDecoder.sol, 39
+SWAP
+PUSH S3
+LDU 256
+POP S5
+PUSH S2
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+PUSH S4
+LDU 256
+POP S6
+PUSH S3
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+ROLL 5
+LDU 256
+DROP
+ROLL 4
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+PUSH S4
+LDU 128
+POP S6
+PUSH S5
+LDU 128
+POP S7
+PUSH S6
+LDU 8
+POP S8
+PUSH S7
+LDU 128
+POP S9
+PUSH S8
+LDU 128
+POP S10
+PAIR
+ROLL 8
+LDREF
+DROP
+TUPLE 9
+.loc libraries/EventDataDecoder.sol, 0
+
+.macro public_function_selector
+DUP
+PUSHINT 949932495
+LEQ
+IFJMPREF {
+	DUP
+	PUSHINT 231016145
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 92882355
+		EQUAL
+		IFJMPREF {
+			CALL $addOwner$
+		}
+		DUP
+		PUSHINT 112246116
+		EQUAL
+		IFJMPREF {
+			CALL $admin$
+		}
+		DUP
+		PUSHINT 131723816
+		EQUAL
+		IFJMPREF {
+			CALL $deployProcessor$
+		}
+		DUP
+		PUSHINT 231016145
+		EQUAL
+		IFJMPREF {
+			CALL $runProcess$
+		}
+	}
+	DUP
+	PUSHINT 388172858
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 244425730
+		EQUAL
+		IFJMPREF {
+			CALL $getCreditProcessorAddress$
+		}
+		DUP
+		PUSHINT 259830910
+		EQUAL
+		IFJMPREF {
+			CALL $runDeriveEventAddress$
+		}
+		DUP
+		PUSHINT 294602773
+		EQUAL
+		IFJMPREF {
+			CALL $runDeployEvent$
+		}
+		DUP
+		PUSHINT 388172858
+		EQUAL
+		IFJMPREF {
+			CALL $upgrade$
+		}
+	}
+	DUP
+	PUSHINT 746328851
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 494343517
+		EQUAL
+		IFJMPREF {
+			CALL $runRetryUnwrap$
+		}
+		DUP
+		PUSHINT 498301913
+		EQUAL
+		IFJMPREF {
+			CALL $runRevertRemainderGas$
+		}
+		DUP
+		PUSHINT 739445888
+		EQUAL
+		IFJMPREF {
+			CALL $sendGas$
+		}
+		DUP
+		PUSHINT 746328851
+		EQUAL
+		IFJMPREF {
+			CALL $runCheckEventStatus$
+		}
+	}
+	DUP
+	PUSHINT 949932495
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 778904229
+		EQUAL
+		IFJMPREF {
+			CALL $getDetails$
+		}
+		DUP
+		PUSHINT 820966086
+		EQUAL
+		IFJMPREF {
+			CALL $constructor$
+		}
+		DUP
+		PUSHINT 872557582
+		EQUAL
+		IFJMPREF {
+			CALL $proxyTokensTransfer$
+		}
+		DUP
+		PUSHINT 949932495
+		EQUAL
+		IFJMPREF {
+			CALL $getCreditProcessorCode$
+		}
+	}
+}
+DUP
+PUSHINT 2088746220
+LEQ
+IFJMPREF {
+	DUP
+	PUSHINT 1447201015
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 981766509
+		EQUAL
+		IFJMPREF {
+			CALL $runRequestTokenEventProxyConfig$
+		}
+		DUP
+		PUSHINT 995308319
+		EQUAL
+		IFJMPREF {
+			CALL $_randomNonce$
+		}
+		DUP
+		PUSHINT 1295979228
+		EQUAL
+		IFJMPREF {
+			CALL $runRequestEventConfigDetails$
+		}
+		DUP
+		PUSHINT 1447201015
+		EQUAL
+		IFJMPREF {
+			CALL $setCreditProcessorCode$
+		}
+	}
+	DUP
+	PUSHINT 1773179900
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 1476854405
+		EQUAL
+		IFJMPREF {
+			CALL $runRequestDexVault$
+		}
+		DUP
+		PUSHINT 1520058455
+		EQUAL
+		IFJMPREF {
+			CALL $runRequestDexPairAddress$
+		}
+		DUP
+		PUSHINT 1575239746
+		EQUAL
+		IFJMPREF {
+			CALL $runRetrySwap$
+		}
+		DUP
+		PUSHINT 1773179900
+		EQUAL
+		IFJMPREF {
+			CALL $resetOwners$
+		}
+	}
+	DUP
+	PUSHINT 2040545115
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 1864410093
+		EQUAL
+		IFJMPREF {
+			CALL $owners$
+		}
+		DUP
+		PUSHINT 1889931595
+		EQUAL
+		IFJMPREF {
+			CALL $runSetSlippage$
+		}
+		DUP
+		PUSHINT 2012139222
+		EQUAL
+		IFJMPREF {
+			CALL $deployProcessorForUser$
+		}
+		DUP
+		PUSHINT 2040545115
+		EQUAL
+		IFJMPREF {
+			CALL $version$
+		}
+	}
+	DUP
+	PUSHINT 2088746220
+	EQUAL
+	IFJMPREF {
+		CALL $setFee$
+	}
+}
+
